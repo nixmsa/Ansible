@@ -1,0 +1,15 @@
+- hosts: target_servers
+# use priviledge (default : root)
+
+  #  become: yes
+# the way to use priviledge
+
+  #  become_method: sudo
+# define tasks
+
+  tasks:
+  - name: nginx  is installed
+    yum: name=nginx state=installed
+  - name: nginx is running and enabled
+    service: name=nginx state=started enabled=yes
+
