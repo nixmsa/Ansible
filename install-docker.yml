@@ -26,33 +26,52 @@
         - yum-utils
         - device-mapper-persistent-data
         - lvm2
+    - name:
+      debug:
+           msg: "Docker Packages are Installed on {{ ansible_hostname }}"
 
     - name: Add Docker repo
       get_url:
           url: https://download.docker.com/linux/centos/docker-ce.repo
           dest: /etc/yum.repos.d/docker-ce.repo
-
+    - name:
+      debug:
+           msg: "Docker repo setup on {{ ansible_hostname }}"
+     
     - name: Install Docker
       yum:
         name: docker-ce
         state: latest
+    - name:
+      debug:
+           msg: "docker-ce installed  on {{ ansible_hostname }}"
 
     - name: Start Docker service
       service:
         name: docker
         state: started
         enabled: yes
-
+    - name:
+      debug:
+           msg: "docker service started  on {{ ansible_hostname }}"
+ 
     - name: Add user shahid to docker group
       user:
         name: shahid
         groups: docker
         append: yes
-
+    - name:
+      debug:
+           msg: "User Shahid created  on {{ ansible_hostname }}"
+   
     - name: Install docker-compose
       get_url: 
         url : https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
         dest: /usr/local/bin/docker-compose
         mode: '0775'
+    - name:
+      debug:
+           msg: "doker-compose installed  on {{ ansible_hostname }}"
+
 
 
