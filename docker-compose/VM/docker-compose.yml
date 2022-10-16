@@ -1,0 +1,83 @@
+version: '3.8' # if no version is specificed then v1 is assumed. Recommend v2 minimum
+
+services:
+  Centos1:
+    hostname: centos1
+    container_name: centos1
+    image: nixmsa/ansible-ssh
+    ports:
+     - 22:22
+    privileged: true
+    volumes:
+            - /home/mahsan:/home/mahsan
+    networks:
+     - diveinto.io
+
+  Centos2:
+    hostname: centos2
+    container_name: centos2
+    image: nixmsa/ansible-ssh
+    ports:
+     - 22:22
+    privileged: true
+    volumes:
+            - /home/mahsan:/home/mahsan
+    networks:
+     - diveinto.io
+
+  Centos3:
+    hostname: centos3
+    container_name: centos3
+    image: nixmsa/ansible-ssh
+    ports:
+     - 22:22
+    privileged: true
+    volumes:
+            - /home/mahsan:/home/mahsan
+    networks:
+     - diveinto.io
+
+
+  Ubuntu1:
+    hostname: ubuntu1
+    container_name: ubuntu1
+    image: nixmsa/ubuntu-ssh
+    ports:
+     - 22:22
+    privileged: true
+    volumes:
+            - /home/mahsan:/home/mahsan
+    networks:
+     - diveinto.io
+
+  Ubuntu2:
+    hostname: ubuntu2
+    container_name: ubuntu2
+    image: nixmsa/ubuntu-ssh
+    ports:
+     - 22:22
+    privileged: true
+    volumes:
+            - /home/mahsan:/home/mahsan
+    networks:
+     - diveinto.io
+
+  Ubuntu3:
+    hostname: ubuntu3
+    container_name: ubuntu3
+    image: nixmsa/ubuntu-ssh
+    ports:
+     - 22:22
+    privileged: true
+    volumes:
+            - /home/mahsan:/home/mahsan
+    networks:
+     - diveinto.io
+
+networks:
+  diveinto.io:
+    name: diveinto.io
+
+
+
+
