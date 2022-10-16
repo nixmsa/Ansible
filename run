@@ -1,0 +1,1 @@
+ansible-playbook -e user_create=yes -e user_name=bob useradd4.yml
