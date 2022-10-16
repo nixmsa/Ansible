@@ -1,0 +1,38 @@
+---
+- name: remove docker packages
+  hosts: all
+  become: true
+  tasks:
+    - name: remove yum pre docker pakages
+      yum:
+        name: "{{ item }}"
+        state: removed
+      with_items:
+        - yum-utils
+        - device-mapper-persistent-data
+        - lvm2
+
+    - name: Stop the Docker service
+      ignore_errors: yes
+      service:
+        name: docker
+        state: stopped
+
+    - name: Remove Docker
+      ignore_errors: yes
+      yum:
+        name: docker-ce
+        state: removed 
+
+    - name: Delete the /var/lib/docker directory
+      ignore_errors: yes
+      file: 
+        path: /var/lib/docker
+        state: absent
+ 
+    - name: remove user shahid  to docker group
+      user:
+        name: shahid
+        groups: docker
+        state: absent
+
