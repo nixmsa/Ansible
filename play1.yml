@@ -1,0 +1,15 @@
+---
+- name: Manage User Account
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+       - name: Create User
+         user:
+             name: "{{ item }}"
+             shell: /bin/bash
+             state: present
+         loop:
+             - muhammad
+             - shahid
+             - ahsan

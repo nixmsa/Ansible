@@ -1,0 +1,18 @@
+---
+- name: Manage User Account
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+       - name: Delete User
+         user:
+             name: "{{ item }}"
+             shell: /bin/bash
+             state: absent
+             remove: true
+         loop:
+             - muhammad
+             - shahid
+             - ahsan
+
+
