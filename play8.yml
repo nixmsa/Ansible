@@ -1,0 +1,13 @@
+---
+- name: Upgrade Systems
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+       - name: Upgrade CentOS
+         package:
+                name: "*"
+                state: latest 
+         when: >
+             ansible_distribution == "CentOS" and
+             ansible_distribution_version != "7.9"

@@ -1,0 +1,17 @@
+---
+- name: remove docker packages
+  hosts: all
+  become: true
+  tasks:
+    - name: Pull images
+      docker_image:
+        name: "{{ item }}"
+        source: pull
+
+      with_items:
+        - centos
+        - ubuntu
+        - redis
+        - nginx
+        - wernight/funbox
+
