@@ -1,0 +1,11 @@
+---
+- name: Setup Message of the Day ....
+  hosts: all
+  become: true
+  vars:
+      web_user: mahsan
+  tasks:
+    - name: Copy /etc/motd
+      template:
+        dest: /etc/motd
+        src: motd.j2
