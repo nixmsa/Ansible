@@ -1,0 +1,44 @@
+---
+- name: Multi-containers
+  hosts: all
+  become: true
+  vars:
+      web_pkg: httpd
+  tasks:
+    - name: Install Apache Package
+      package:
+        name: "{{ web_pkg }}"
+        state: present
+
+    - name: Copy ndex content
+      copy:
+        src: web/index.html
+        directory_mode: true
+        dest: /var/www/html    
+     
+    - name: Copy Contact content
+      copy:
+        src: web/contact.html
+        directory_mode: true
+        dest: /var/www/html    
+
+
+    - name: Open the port for the web server
+      firewalld:
+        service: https
+        state: enabled
+        immediate: true
+        permanent: true
+
+    - name: Web service enabled and restarted
+      service:
+        name: "{{ web_pkg }}"
+        state: restarted
+        enabled: true
+
+    - name: Firewall service enable and restarted
+      service:
+        name: firewalld
+        state: restarted
+        enabled: true
+
