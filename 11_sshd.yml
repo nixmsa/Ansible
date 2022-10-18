@@ -1,0 +1,15 @@
+---
+- name: Manage sshd
+  hosts: all
+  become: true
+  vars:
+      firewall_pkg: firewalld
+      web_user: mahsan
+  tasks:
+    - name: Edit SSHD Config
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin '
+        insertafter: '#PermitRootLogin'
+        line: 'PermitRootLogin yes'
+
