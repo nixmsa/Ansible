@@ -1,0 +1,10 @@
+---
+# tasks file for mongodb
+
+- name: Install MongoDB
+  apt:
+     name: mongodb
+     state: present
+
+- name: Start Mongod daemon
+  shell: "mongod &"

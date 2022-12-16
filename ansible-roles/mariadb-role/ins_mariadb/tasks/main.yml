@@ -1,0 +1,6 @@
+- name: mariadb is installed
+  apt:
+    name: "{{ mariadb_package }}"
+    state: present
+  tags: install_mariadb
+
