@@ -6,6 +6,6 @@ RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN ssh-keygen -A
 RUN echo "root:centos" | chpasswd
 RUN useradd -m mahsan
-RUN echo "mahsan:tripod001" | chpasswd
+RUN echo "mahsan:test" | chpasswd
 RUN echo "mahsan  ALL=(ALL)  NOPASSWD: ALL" >> /etc/sudoers
 CMD ["/usr/sbin/sshd", "-D"]
